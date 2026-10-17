@@ -2,14 +2,249 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>新創研 - 秋大祭2026</title>
-<style>body{font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;margin:0;text-align:center}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>新事業創造研究会（新創研）｜秋田大学</title>
+<meta name="description" content="秋田大学の学生団体、新事業創造研究会（新創研）。学内イベントを盛り上げ、学生生活を支える取り組みをしています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+/* 上部と活動カードはA4ポスター（クリーム×青×赤）、本文はUIデザインルール（緑×黄） */
+:root {
+  /* ポスター */
+  --cream: #FFF4C9; --ink: #1B1B1B; --blue: #1F4FD1; --red: #D3361C; --yellow: #FFD23F;
+  /* 来場者向け 緑×黄 */
+  --g-text: #0B3D24; --g-main: #167A3E; --g-face: #DDF3E2; --g-bg: #F1FAF3; --g-yellow: #FFD43B;
+  --r-s: 14px; --r-m: 22px; --r-l: 32px; --r-xl: 44px;
+  --dela: 'Dela Gothic One', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--g-bg); color: var(--g-text);
+  font: 500 16px/1.7 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  letter-spacing: .02em; line-break: strict; word-break: auto-phrase;
+}
+h1, h2, h3, p, ol, ul, dl, dd { margin: 0; }
+h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+a { color: var(--g-main); }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.wrap { max-width: 720px; margin: 0 auto; padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px)); }
+.nw { white-space: nowrap; }
+.note-s { font-size: 14px; }
+
+/* ---------- ヒーロー（ポスター） ---------- */
+.hero { background: var(--cream); color: var(--ink); border-bottom: 3px solid var(--ink); }
+.hero .wrap { padding-top: max(28px, env(safe-area-inset-top, 0px)); padding-bottom: 36px; display: grid; gap: 20px; }
+.hero h1 { font-family: var(--dela); font-weight: 400; font-size: clamp(44px, 12.5vw, 80px); line-height: 1.1; letter-spacing: 0; }
+.hero h1 span { display: block; }
+.hero h1 .short { color: var(--red); font-size: .5em; margin-top: 6px; }
+.hero .copy { font-size: clamp(18px, 5vw, 24px); font-weight: 900; line-height: 1.55; }
+.hero .copy em { font-style: normal; color: var(--blue); }
+.jump { display: flex; flex-wrap: wrap; gap: 10px; }
+.jump a {
+  display: inline-flex; align-items: center; min-height: 48px; padding: 6px 18px;
+  background: #fff; color: var(--ink); border: 3px solid var(--ink); border-radius: 999px;
+  font-weight: 900; text-decoration: none;
+}
+.jump a.hot { background: var(--blue); color: #fff; }
+
+/* ---------- 本文（緑×黄） ---------- */
+main .wrap { padding-top: 32px; padding-bottom: 40px; display: grid; gap: 32px; }
+section { display: grid; gap: 14px; scroll-margin-top: 16px; }
+.eyebrow { font-size: 14px; font-weight: 700; color: var(--g-main); letter-spacing: .08em; }
+section h2 { font-size: 28px; font-weight: 700; line-height: 1.35; }
+.card { background: #fff; border-radius: var(--r-l); corner-shape: squircle; padding: 20px; display: grid; gap: 12px; }
+.facts { display: grid; grid-template-columns: 5em minmax(0, 1fr); gap: 10px 12px; }
+.facts dt { font-size: 14px; font-weight: 700; color: var(--g-main); padding-top: 2px; }
+.facts dd { font-weight: 700; }
+
+.aims { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px; }
+.aims li { background: #fff; border-radius: var(--r-l); corner-shape: squircle; padding: 18px; display: grid; gap: 6px; }
+.aims b { font-size: 18px; font-weight: 700; line-height: 1.5; }
+.aims svg { width: 32px; height: 32px; color: var(--g-main); }
+
+/* 活動カード：ポスターの太枠を引き継ぐ */
+.works { display: grid; gap: 14px; }
+.work { background: #fff; color: var(--ink); border: 3px solid var(--ink); border-radius: 18px; padding: 18px; display: grid; gap: 10px; }
+.work.feature { background: var(--cream); }
+.work .label { justify-self: start; border-radius: 999px; padding: 2px 14px; font-size: 14px; font-weight: 900; color: #fff; background: var(--blue); }
+.work .label.next { background: var(--ink); }
+.work h3 { font-family: var(--dela); font-weight: 400; font-size: clamp(24px, 7vw, 32px); line-height: 1.25; letter-spacing: 0; }
+.work h3 .r { color: var(--red); }
+.work .meta { font-weight: 900; }
+.price-line { display: flex; flex-wrap: wrap; gap: 8px; }
+.price-line span { background: #fff; border: 3px solid var(--ink); border-radius: 999px; padding: 2px 14px; font-weight: 900; white-space: nowrap; }
+.price-line span b { color: var(--red); }
+.status {
+  justify-self: start; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 16px;
+  border-radius: var(--r-s); corner-shape: squircle; font-weight: 700;
+  background: var(--g-face); color: var(--g-text);
+}
+.status.on { background: var(--g-yellow); }
+.status svg { width: 18px; height: 18px; }
+.flow { padding-left: 1.4em; display: grid; gap: 4px; font-weight: 700; }
+
+.owner { background: var(--g-main); color: #fff; border-radius: var(--r-xl); corner-shape: squircle; padding: 24px 20px; display: grid; gap: 14px; }
+.owner .eyebrow { color: var(--g-yellow); }
+.owner h2 { color: #fff; }
+.owner ol { padding-left: 1.4em; display: grid; gap: 8px; }
+.owner .tip { background: #fff; color: var(--g-text); border-radius: var(--r-m); corner-shape: squircle; padding: 14px 18px; font-size: 14px; display: grid; gap: 4px; }
+.owner .tip b { font-size: 16px; }
+
+.dl {
+  display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 20px;
+  background: var(--g-main); color: #fff; border-radius: var(--r-m); corner-shape: squircle;
+  font-weight: 700; text-decoration: none; line-height: 1.4;
+}
+.dl svg { width: 24px; height: 24px; flex: none; }
+.dl small { display: block; font-size: 14px; font-weight: 500; }
+
+footer { background: var(--g-text); color: #fff; }
+footer .wrap { padding-top: 24px; padding-bottom: max(28px, env(safe-area-inset-bottom, 0px)); display: grid; gap: 4px; font-size: 14px; }
+footer b { font-size: 16px; }
+
+@media (min-width: 640px) {
+  .hero .wrap { padding-top: 48px; padding-bottom: 48px; gap: 24px; }
+}
+</style>
 </head>
 <body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1><span>新事業</span><span>創造研究会</span><span class="short">新創研</span></h1>
+    <p class="copy">学内に<wbr>「<em>あったらいいな</em>」を。<wbr>イベントを盛り上げ、<wbr>学生生活を支える仕組みを、<wbr>学生の手でつくります。</p>
+    <nav class="jump" aria-label="ページ内リンク">
+      <a href="#about">わたしたちについて</a>
+      <a href="#works">活動</a>
+      <a class="hot" href="#owner">キーホルダーをお持ちの方</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-<h1>新創研</h1>
-<p>秋大祭2026 ひみつ道具ギャラリー（準備中）</p>
+  <div class="wrap">
+
+    <section id="about" aria-labelledby="h-about">
+      <p class="eyebrow">わたしたちについて</p>
+      <h2 id="h-about">学生の<wbr>「困った」と<wbr>「楽しい」から<wbr>事業をつくる</h2>
+      <ul class="aims">
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg>
+          <b>学内イベントを<wbr>盛り上げる</b>
+          <p>大学祭などで、<wbr>来た人が参加して<wbr>楽しめる企画を出します。</p>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 012-2h12v15H6a2 2 0 00-2 2zM8 8h6"/></svg>
+          <b>学生生活を<wbr>支える</b>
+          <p>教科書など、<wbr>学生の身近な負担を<wbr>軽くする仕組みを考えます。</p>
+        </li>
+      </ul>
+      <div class="card">
+        <dl class="facts">
+          <dt>活動開始</dt><dd>2026年4月</dd>
+          <dt>定例</dt><dd>毎週火曜 <span class="nw">16:00〜18:00</span></dd>
+          <dt>拠点</dt><dd>秋田大学 手形キャンパス</dd>
+          <dt>メンバー</dt><dd>4名</dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="works" aria-labelledby="h-works">
+      <p class="eyebrow">活動</p>
+      <h2 id="h-works">いま取り組んでいること</h2>
+      <div class="works">
+
+        <article class="work feature" aria-labelledby="h-booth">
+          <span class="label">秋大祭2026 出店</span>
+          <h3 id="h-booth">ひみつ道具、<wbr><span class="r">つくります。</span></h3>
+          <p class="meta">第59回 秋田大学祭<br><span class="nw">10/17(土)・18(日)</span> <span class="nw">10:00–17:00</span></p>
+          <p>一言書くだけで、<wbr>あなただけのひみつ道具を<wbr>AIが絵にして、<wbr>約15分でキーホルダーにします。</p>
+          <ol class="flow">
+            <li>iPadに「あったらいいな」を書く</li>
+            <li>スマホでQRを読んで待つ</li>
+            <li>ブースで受け取り、<wbr>スマホをかざす</li>
+          </ol>
+          <div class="price-line">
+            <span>キーホルダー <b>500円</b></span>
+            <span>ステッカー <b>300円</b></span>
+          </div>
+          <p class="note-s">お支払いは受け取りのときです。</p>
+          <span class="status" id="status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span id="status-text">開催日時をご確認ください</span>
+          </span>
+        </article>
+
+        <article class="work" aria-labelledby="h-books">
+          <span class="label next">11月下旬 開始予定</span>
+          <h3 id="h-books">教科書を、<wbr>次の学生へ</h3>
+          <p>使い終わった教科書を<wbr>ゆずってもらい、<wbr>必要な学生に届けます。<wbr>くわしくは準備ができしだい<wbr>お知らせします。</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="owner" id="owner" aria-labelledby="h-owner">
+      <p class="eyebrow">キーホルダーをお持ちの方へ</p>
+      <h2 id="h-owner">スマホをかざして、<wbr>道具の正体を見よう</h2>
+      <ol>
+        <li>キーホルダーの<wbr>ステッカー面に、<wbr>スマホの背面をかざします。</li>
+        <li>出てきた通知をタップすると、<wbr>道具の名前と説明が<wbr>表示されます。</li>
+      </ol>
+      <div class="tip">
+        <b>うまく読めないときは</b>
+        <p>iPhoneは<wbr>上の端（カメラのあたり）を<wbr>近づけてください。<wbr>Androidは<wbr>設定でNFCを<wbr>オンにしてください。</p>
+      </div>
+      <a class="dl" href="#pcb" style="background:#fff;color:var(--g-text)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        <span>基板のつくりと説明書を見る</span>
+      </a>
+    </section>
+
+    <section id="pcb" aria-labelledby="h-pcb">
+      <p class="eyebrow">基板のつくり</p>
+      <h2 id="h-pcb">キーホルダーの<wbr>中身を公開しています</h2>
+      <div class="card">
+        <p>キーホルダーは、<wbr>わたしたちが設計した<wbr>32×45mmの基板です。<wbr>部品は電池・スイッチ・抵抗・LEDの4つで、<wbr>ボタンを押している間だけ<wbr>LEDが橙色に光ります。</p>
+        <dl class="facts">
+          <dt>大きさ</dt><dd>32×45mm</dd>
+          <dt>電池</dt><dd>ボタン電池 CR1220（3V）</dd>
+          <dt>組み立て</dt><dd>1台 約10分（はんだ付け）</dd>
+        </dl>
+        <a class="dl" href="assets/keyholder-v4-assembly.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          <span>部品取り付け説明書<small>PDF・A4 1枚・544KB</small></span>
+        </a>
+        <p class="note-s">電池が弱って暗くなったら、<wbr>新しいCR1220に替えてください。<wbr>＋の面を外側にして差し込みます。</p>
+      </div>
+    </section>
+
+  </div>
 </main>
+
+<footer>
+  <div class="wrap">
+    <b>新事業創造研究会（新創研）</b>
+    <span>秋田大学 手形キャンパス</span>
+  </div>
+</footer>
+
+<script>
+// 秋大祭が開催中かどうかを日本時間で判定して表示する
+(() => {
+  const days = ['2026-10-17', '2026-10-18'];
+  const jst = new Date(Date.now() + 9 * 3600e3);
+  const day = jst.toISOString().slice(0, 10), h = jst.getUTCHours();
+  let t = '開催前です', on = false;
+  if (day > days[1] || (day === days[1] && h >= 17)) t = '今年の出店は終了しました。ありがとうございました';
+  else if (days.includes(day) && h >= 10 && h < 17) { t = '本日 開催中（17:00まで）'; on = true; }
+  else if (days.includes(day)) t = h < 10 ? '本日 10:00から開催' : '本日の受付は終了しました';
+  document.getElementById('status-text').textContent = t;
+  document.getElementById('status').classList.toggle('on', on);
+})();
+</script>
 </body>
 </html>
